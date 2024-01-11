@@ -71,6 +71,7 @@
                         if (item.type === 'dir') {
                             link.className = 'folder';
                             link.addEventListener('click', toggleFolder);
+                            link.target = '_blank'; // Open folders in a new tab
                         } else if (item.type === 'file') {
                             link.href = item.download_url;
                         }
