@@ -53,24 +53,21 @@
     </ul>
 
     <script>
-        let currentPath = '';
+        const historyStack = []; // Maintain history of opened folders
 
         function toggleFolder(event) {
             event.preventDefault();
             const folderList = event.currentTarget.nextElementSibling;
             folderList.style.display = folderList.style.display === 'none' ? 'block' : 'none';
 
+            // Update the URL and history when a folder is clicked
             if (folderList.style.display === 'block') {
                 const folderName = event.currentTarget.textContent;
-                currentPath = currentPath.endsWith('/') ? `${currentPath}${folderName}` : `${currentPath}/${folderName}`;
-            } else {
-                // Update the URL when navigating back
-                const parts = currentPath.split('/');
-                parts.pop();
-                currentPath = parts.join('/');
+                const currentPath = window.location.pathname;
+                const newPath = currentPath.endsWith('/') ? `${currentPath}${folderName}` : `${currentPath}/${folderName}`;
+                window.history.pushState({}, '', newPath);
+                historyStack.push(currentPath);
             }
-
-            window.history.pushState({}, '', `/amanpraaj/testcode${currentPath}`);
         }
 
         function fetchFiles(url, container) {
@@ -103,10 +100,17 @@
         }
 
         // Initial fetch based on the current URL path
-        const initialPath = window.location.pathname.replace('/amanpraaj/testcode', '');
-        currentPath = initialPath;
-        fetchFiles(`https://api.github.com/repos/amanpraaj/testcode/contents${initialPath}`, document.getElementById('fileList'));
+        const currentPath = window.location.pathname;
+        const repoPath = currentPath.startsWith('/amanpraaj/testcode/') ? currentPath.replace('/amanpraaj/testcode/', '') : '';
+        fetchFiles(`https://api.github.com/repos/amanpraaj/testcode/contents/${repoPath}`, document.getElementById('fileList'));
+
+        // Handle browser back button
+        window.onpopstate = function(event) {
+            const previousPath = historyStack.pop();
+            fetchFiles(`https://api.github.com/repos/amanpraaj/testcode/contents${previousPath}`, document.getElementById('fileList'));
+        };
     </script>
 
 </body>
 </html>
+
