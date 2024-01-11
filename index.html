@@ -1,1 +1,66 @@
-<div id="profit-calculator-47446"><script type="text/javascript" src="https://www.rebatekingfx.com/Content/remote/remote-widgets.js"></script><script type="text/javascript"> RemoteCalc({"Url":"https://www.rebatekingfx.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCNmZmYgMjAlLCAjZjVmNWY1IDQ1JSk7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYTsgYm9yZGVyLWJvdHRvbTogbm9uZTsg","BottomPaneStyle":"YmFja2dyb3VuZDogI2YzZjNmMzsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYTsgY29sb3I6IGJsYWNrOw==","ButtonStyle":"YmFja2dyb3VuZDogIzM0MzU0MDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","TextboxStyle":"YmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYWFhYQ==","ContainerWidth":"1000","HighlightColor":"#ffff00","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"profit-calculator-47446"});</script></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Listing</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>File Listing</h1>
+
+    <ul id="fileList">
+        <!-- File links will be added here dynamically -->
+    </ul>
+
+    <script>
+        fetch('https://api.github.com/repos/amanpraaj/testcode/contents')
+            .then(response => response.json())
+            .then(data => {
+                const fileListElement = document.getElementById('fileList');
+
+                data.forEach(file => {
+                    if (file.type === 'file') {
+                        const listItem = document.createElement('li');
+                        const link = document.createElement('a');
+                        link.href = file.download_url;
+                        link.textContent = file.name;
+                        listItem.appendChild(link);
+                        fileListElement.appendChild(listItem);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching files:', error));
+    </script>
+
+</body>
+</html>
