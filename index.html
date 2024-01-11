@@ -36,6 +36,7 @@
 
         .folder {
             font-weight: bold;
+            cursor: pointer;
         }
 
         .folder ul {
@@ -53,21 +54,10 @@
     </ul>
 
     <script>
-        const historyStack = []; // Maintain history of opened folders
-
         function toggleFolder(event) {
             event.preventDefault();
             const folderList = event.currentTarget.nextElementSibling;
             folderList.style.display = folderList.style.display === 'none' ? 'block' : 'none';
-
-            // Update the URL and history when a folder is clicked
-            if (folderList.style.display === 'block') {
-                const folderName = event.currentTarget.textContent;
-                const currentPath = window.location.pathname;
-                const newPath = currentPath.endsWith('/') ? `${currentPath}${folderName}` : `${currentPath}/${folderName}`;
-                window.history.pushState({}, '', newPath);
-                historyStack.push(currentPath);
-            }
         }
 
         function fetchFiles(url, container) {
@@ -92,7 +82,6 @@
                         if (item.type === 'dir') {
                             const subList = document.createElement('ul');
                             listItem.appendChild(subList);
-                            fetchFiles(item.url, subList);
                         }
                     });
                 })
@@ -103,14 +92,7 @@
         const currentPath = window.location.pathname;
         const repoPath = currentPath.startsWith('/amanpraaj/testcode/') ? currentPath.replace('/amanpraaj/testcode/', '') : '';
         fetchFiles(`https://api.github.com/repos/amanpraaj/testcode/contents/${repoPath}`, document.getElementById('fileList'));
-
-        // Handle browser back button
-        window.onpopstate = function(event) {
-            const previousPath = historyStack.pop();
-            fetchFiles(`https://api.github.com/repos/amanpraaj/testcode/contents${previousPath}`, document.getElementById('fileList'));
-        };
     </script>
 
 </body>
 </html>
-
