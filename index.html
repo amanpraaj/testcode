@@ -43,13 +43,16 @@
     </ul>
 
     <script>
+        const currentScript = document.currentScript.src;
+
         fetch('https://api.github.com/repos/amanpraaj/testcode/contents')
             .then(response => response.json())
             .then(data => {
                 const fileListElement = document.getElementById('fileList');
 
                 data.forEach(file => {
-                    if (file.type === 'file') {
+                    // Exclude the current script file
+                    if (file.type === 'file' && file.download_url !== currentScript) {
                         const listItem = document.createElement('li');
                         const link = document.createElement('a');
                         link.href = file.download_url;
