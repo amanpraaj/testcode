@@ -27,6 +27,7 @@
         a {
             text-decoration: none;
             color: #007BFF;
+            cursor: pointer;
         }
 
         a:hover {
@@ -35,12 +36,11 @@
 
         .folder {
             font-weight: bold;
-            cursor: pointer;
         }
 
         .folder ul {
             display: none;
-            margin-left: 20px;
+            padding-left: 20px;
         }
     </style>
 </head>
@@ -54,7 +54,8 @@
 
     <script>
         function toggleFolder(event) {
-            const folderList = event.target.nextElementSibling;
+            event.preventDefault();
+            const folderList = event.currentTarget.nextElementSibling;
             folderList.style.display = folderList.style.display === 'none' ? 'block' : 'none';
         }
 
@@ -80,6 +81,7 @@
                         if (item.type === 'dir') {
                             const subList = document.createElement('ul');
                             listItem.appendChild(subList);
+                            fetchFiles(item.url, subList);
                         }
                     });
                 })
