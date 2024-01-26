@@ -42,3 +42,54 @@ footer {
     background-color: #03a9f4;
     color: #fff;
 }
+
+/* Additional Styles for Specific Components */
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-container .mdc-card {
+    flex: 1 0 calc(33.33% - 10px);
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-container .mdc-card img {
+    width: 100%;
+    height: auto;
+}
+
+.mdc-textfield {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.mdc-textfield__input {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.mdc-button {
+    background-color: #03a9f4;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mdc-button:hover {
+    background-color: #0288d1;
+}
