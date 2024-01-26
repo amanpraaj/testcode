@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Listing</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            margin: 10px 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007BFF;
-            cursor: pointer;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .folder {
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .folder ul {
-            display: none;
-            padding-left: 20px;
-        }
-    </style>
+    <title>Shyam Event Management</title>
+    <link rel="stylesheet" href="src/css/styles.css">
 </head>
+
 <body>
+    <header>
+        <h1>Shyam Event Management</h1>
+        <p>Your Choice, Our Promise</p>
+    </header>
 
-    <h1>File Listing</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
 
-    <ul id="fileList">
-        <!-- File links will be added here dynamically -->
-    </ul>
+    <section id="home">
+        <h2>Welcome to Shyam Event Management</h2>
+        <p>Your go-to destination for event decoration and planning.</p>
+    </section>
 
-    <script>
-        function toggleFolder(event) {
-            event.preventDefault();
-            const folderList = event.currentTarget.nextElementSibling;
-            folderList.style.display = folderList.style.display === 'none' ? 'block' : 'none';
-        }
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Shyam Event Management, founded by Deepak Nimedia, is dedicated to creating memorable events through stunning decorations.</p>
+    </section>
 
-        function fetchFiles(url, container) {
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(item => {
-                        const listItem = document.createElement('li');
-                        const link = document.createElement('a');
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service">
+            <h3>Birthday Decoration</h3>
+            <p>Transform your birthday party with our creative and personalized decorations.</p>
+        </div>
+        <!-- Repeat similar service sections for other services -->
+    </section>
 
-                        if (item.type === 'dir') {
-                            link.className = 'folder';
-                            link.addEventListener('click', toggleFolder);
-                            link.target = '_blank'; // Open folders in a new tab
-                        } else if (item.type === 'file') {
-                            link.href = item.download_url;
-                        }
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <a href="path/to/image1.jpg" data-lightbox="gallery" data-title="Event Decoration 1">
+                <img src="path/to/image1-thumb.jpg" alt="Event Decoration 1">
+            </a>
 
-                        link.textContent = item.name;
-                        listItem.appendChild(link);
-                        container.appendChild(listItem);
+            <!-- Repeat similar anchor tags for other images -->
 
-                        if (item.type === 'dir') {
-                            const subList = document.createElement('ul');
-                            listItem.appendChild(subList);
-                        }
-                    });
-                })
-                .catch(error => console.error('Error fetching files:', error));
-        }
+            <!-- Example: -->
+            <a href="path/to/image2.jpg" data-lightbox="gallery" data-title="Event Decoration 2">
+                <img src="path/to/image2-thumb.jpg" alt="Event Decoration 2">
+            </a>
+        </div>
+    </section>
 
-        // Initial fetch based on the current URL path
-        const currentPath = window.location.pathname;
-        const repoPath = currentPath.startsWith('/amanpraaj/testcode/') ? currentPath.replace('/amanpraaj/testcode/', '') : '';
-        fetchFiles(`https://api.github.com/repos/amanpraaj/testcode/contents/${repoPath}`, document.getElementById('fileList'));
-    </script>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Reach out to us for inquiries or bookings.</p>
+        <form id="contactForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
 
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section id="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p>"Amazing decorations! Our wedding was a dream come true."</p>
+                <p class="client">- John and Jane Doe</p>
+            </div>
+            <!-- Repeat similar testimonial divs for other testimonials -->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Shyam Event Management | Designed by YourName</p>
+        <div class="social-links">
+            <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
+            <a href="https://instagram.com/yourpage" target="_blank">Instagram</a>
+            <a href="https://twitter.com/yourpage" target="_blank">Twitter</a>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="src/js/script.js"></script>
 </body>
+
 </html>
