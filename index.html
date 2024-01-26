@@ -6,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shyam Event Management</title>
 
-    <!-- Include Material Web styles -->
-    <link rel="stylesheet" href="node_modules/@material/button/dist/mdc.button.css">
-    <link rel="stylesheet" href="node_modules/@material/card/dist/mdc.card.css">
-    <link rel="stylesheet" href="node_modules/@material/icon-button/dist/mdc.icon-button.css">
-    <link rel="stylesheet" href="node_modules/@material/textfield/dist/mdc.textfield.css">
-    <link rel="stylesheet" href="node_modules/@material/top-app-bar/dist/mdc.top-app-bar.css">
-    <link rel="stylesheet" href="src/styles.css"> <!-- Your custom styles -->
-
-    <!-- Include Material Web icons -->
+    <!-- Material Web styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/button/dist/mdc.button.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/card/dist/mdc.card.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/icon-button/dist/mdc.icon-button.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/textfield/dist/mdc.textfield.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material/top-app-bar/dist/mdc.top-app-bar.css">
+    <link rel="stylesheet" href="src/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -38,14 +36,65 @@
         </ul>
     </nav>
 
-    <section id="home" class="mdc-card">
+
+<section id="home" class="mdc-card">
         <h2>Welcome to Shyam Event Management</h2>
         <p>Your go-to destination for event decoration and planning.</p>
     </section>
 
-    <!-- More sections for About Us, Services, Gallery, Contact Us, etc. -->
+    <section id="about" class="mdc-card">
+        <h2>About Us</h2>
+        <p>Shyam Event Management, founded by Deepak Nimedia, is dedicated to creating memorable events through stunning decorations.</p>
+    </section>
 
-    <footer class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <section id="services" class="mdc-card">
+        <h2>Our Services</h2>
+        <div class="mdc-card__actions">
+            <div class="mdc-card__action-buttons">
+                <button class="mdc-button mdc-card__action mdc-card__action--button">Birthday Decoration</button>
+                <button class="mdc-button mdc-card__action mdc-card__action--button">Wedding Decoration</button>
+                <button class="mdc-button mdc-card__action mdc-card__action--button">Surprise Planner</button>
+            </div>
+        </div>
+    </section>
+
+<section id="gallery" class="mdc-card">
+        <h2>Gallery</h2>
+        <div class="mdc-card__media">
+            <div class="gallery-container">
+                <div class="mdc-card">
+                    <img src="path/to/image1.jpg" alt="Event Decoration 1">
+                </div>
+                <!-- Add more card elements for additional images -->
+            </div>
+        </div>
+    </section>
+
+
+<section id="contact" class="mdc-card">
+        <h2>Contact Us</h2>
+        <form id="contactForm" class="mdc-card__actions">
+            <div class="mdc-textfield">
+                <input type="text" id="name" name="name" class="mdc-textfield__input" required>
+                <label class="mdc-textfield__label" for="name">Your Name</label>
+            </div>
+
+            <div class="mdc-textfield">
+                <input type="email" id="email" name="email" class="mdc-textfield__input" required>
+                <label class="mdc-textfield__label" for="email">Your Email</label>
+            </div>
+
+            <div class="mdc-textfield">
+                <textarea id="message" name="message" rows="4" class="mdc-textfield__input" required></textarea>
+                <label class="mdc-textfield__label" for="message">Your Message</label>
+            </div>
+
+            <button type="submit" class="mdc-button">Submit</button>
+        </form>
+    </section>
+
+
+<footer class="mdc-top-app-bar mdc-top-app-bar--fixed">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <p class="mdc-top-app-bar__title">&copy; 2024 Shyam Event Management | Designed by YourName</p>
@@ -57,10 +106,13 @@
             </section>
         </div>
     </footer>
+    <!-- Other sections ... -->
 
-    <script src="node_modules/@material/top-app-bar/dist/mdc.top-app-bar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material/top-app-bar/dist/mdc.top-app-bar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material/button/dist/mdc.button.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material/textfield/dist/mdc.textfield.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material/card/dist/mdc.card.js"></script>
     <script src="src/script.js"></script>
 </body>
 
-    </html>
-    
+</html>
