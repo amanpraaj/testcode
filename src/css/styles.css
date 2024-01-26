@@ -2,17 +2,19 @@
 body, h1, h2, p {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Apply a minimal Material Design style */
+/* Apply a simple light theme */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     color: #333;
+    line-height: 1.6;
 }
 
 header {
-    background-color: #1976D2;
+    background-color: #03a9f4;
     color: #fff;
     text-align: center;
     padding: 1em;
@@ -20,17 +22,18 @@ header {
 
 nav {
     background-color: #fff;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 0.5em;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    justify-content: center;
 }
 
 nav li {
-    margin-right: 1em;
+    margin: 0 1em;
 }
 
 section {
@@ -39,9 +42,11 @@ section {
 
 .service {
     background-color: #fff;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
     padding: 1em;
     margin-bottom: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-container {
@@ -58,6 +63,7 @@ section {
 .gallery-container img {
     width: 100%;
     height: auto;
+    border-radius: 4px;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -69,14 +75,15 @@ form {
     max-width: 500px;
     margin: auto;
     background-color: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 2em;
-    border-radius: 5px;
+    padding: 1em;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 label {
     display: block;
     margin-bottom: 0.5em;
+    color: #333;
 }
 
 input,
@@ -84,26 +91,27 @@ textarea {
     width: 100%;
     padding: 0.5em;
     margin-bottom: 1em;
-    border: 1px solid #ddd;
-    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
 }
 
 button {
-    background-color: #1976D2;
+    background-color: #03a9f4;
     color: #fff;
     padding: 0.5em 1em;
     border: none;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 button:hover {
-    background-color: #1565C0;
+    background-color: #0288d1;
 }
 
 #testimonials {
     background-color: #fff;
     padding: 2em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-container {
@@ -123,14 +131,15 @@ button:hover {
     opacity: 1;
 }
 
-.footer {
-    background-color: #1976D2;
+footer {
+    background-color: #03a9f4;
     color: #fff;
     text-align: center;
     padding: 1em;
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .social-links a {
