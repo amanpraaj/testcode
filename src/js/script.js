@@ -1,24 +1,22 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Material Web components
-    const topAppBar = new mdc.topAppBar.MDCTopAppBar(document.querySelector('.mdc-top-app-bar'));
-    topAppBar.listen('MDCTopAppBar:nav', () => {
-        // Handle navigation button click if needed
-    });
+ const navbar = document.querySelector("header");
+        const heroSection = document.getElementById("hero");
 
-    const list = new mdc.list.MDCList(document.querySelector('.mdc-list'));
-    list.singleSelection = true;
+        const toggleNavbarBackground = () =>
+        (navbar.style.backgroundColor =
+            window.scrollY > heroSection.offsetHeight - navbar.offsetHeight
+                ? "#53376F"
+                : "transparent");
 
-    // Initialize Material Web components
-    const buttons = document.querySelectorAll('.mdc-button');
-    buttons.forEach(button => new mdc.button.MDCButton(button));
+        toggleNavbarBackground();
+        window.addEventListener("scroll", toggleNavbarBackground);
 
-    const textFields = document.querySelectorAll('.mdc-textfield');
-    textFields.forEach(textField => new mdc.textfield.MDCTextfield(textField));
+        const toggleBtn = document.querySelector(".toggle_btn");
+        const toggleBtnIcon = toggleBtn.querySelector("i");
+        const dropDownMenu = document.querySelector(".dropdown_menu");
 
-    // Additional JavaScript logic can go here
-});
-
-
-    // Additional initialization for other components...
-});
-
+        toggleBtn.addEventListener("click", () => {
+            dropDownMenu.classList.toggle("open");
+            toggleBtnIcon.className = dropDownMenu.classList.contains("open")
+                ? "fa-solid fa-xmark"
+                : "fa-solid fa-bars";
+        });
