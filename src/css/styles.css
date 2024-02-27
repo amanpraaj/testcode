@@ -167,7 +167,7 @@
             justify-content: center;
             text-align: center;
             color: var(--secondary-color);
-            background-image: url("images/bg.jpg");
+            background-image: url("../images/bg.jpg");
             background-size: cover;
             background-position: center;
         }
